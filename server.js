@@ -28,4 +28,8 @@ mongoose.connect(process.env.DATABASE_URL || process.env.MONGODB_URI, {
   () => {console.log("My database is connected");}
 );
 
+app.get('/', (req, res) => {
+  res.send('working')
+})
+
 app.listen(PORT, () => {console.log("Tiny electronic ears are listening on port " + PORT);});
