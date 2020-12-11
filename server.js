@@ -6,12 +6,6 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 
-// Controllers
-const signin = require('./controllers/signin');
-const register = require('./controllers/register');
-const profile = require('./controllers/profile');
-const auth = require('./controllers/authorization');
-
 const PORT = process.env.PORT;
 const app = express();
 
