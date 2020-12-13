@@ -10,20 +10,20 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use(cors())
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+const userRoutes = require('./routes/user')
+
 mongoose.connect(process.env.DATABASE_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true
-  },
-  () => {console.log("My database is connected");}
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+},
+  () => { console.log("My database is connected"); }
 );
 
-app.get('/', (req, res) => {
-  res.send('working')
-})
+app.use('/user', userRoutes)
 
-app.listen(PORT, () => {console.log("Tiny electronic ears are listening on port " + PORT);});
+app.listen(PORT, () => { console.log("Tiny electronic ears are listening on port " + PORT); });
