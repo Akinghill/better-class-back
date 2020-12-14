@@ -6,7 +6,6 @@ const cors = require('cors')
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
 
-const PORT = process.env.PORT;
 const app = express();
 
 app.use(cors())
@@ -25,5 +24,5 @@ mongoose.connect(process.env.DATABASE_URL, {
 );
 
 app.use('/user', userRoutes)
-
-app.listen(PORT, () => { console.log("Tiny electronic ears are listening on port " + PORT); });
+let PORT = process.env.PORT
+app.listen(PORT || 5000, () => { console.log("Tiny electronic ears are listening on port " + PORT); });
